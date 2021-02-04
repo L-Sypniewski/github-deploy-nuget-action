@@ -52,6 +52,10 @@ else
 fi
 
 
+#Print ls
+ls -a
+echo $(ls -a)
+
 #Create package 
 dotnet pack "${project_name}/${project_name}.csproj" -c Release -p:Company="${company}" -p:Description="${description}" -p:PackageId="${packageId}" -p:Title="${title}" -p:PackageProjectUrl="${packageProjectUrl}" -p:RepositoryUrl="${repositoryUrl}" -p:Authors="${authors}" -p:RepositoryCommit="${commit_id}" -p:PackageVersion=${version} --output nuget-packages/"${project_name}" --include-symbols 
 
