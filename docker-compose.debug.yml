@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  githubdeploynugetaction:
+    image: githubdeploynugetaction
+    build:
+      context: .
+      dockerfile: ./Dockerfile

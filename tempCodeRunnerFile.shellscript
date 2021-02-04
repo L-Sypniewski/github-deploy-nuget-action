@@ -1,0 +1,13 @@
+
+sourceUsername=${SOURCE_USERNAME}
+sourcePassword=${SOURCE_PASSWORD}
+
+
+echo -e "\tSOURCE_USERNAME: ${sourceUsername}"
+echo -e "\tSOURCE_PASSWORD: ${sourcePassword}"
+
+if [ -z "$sourceUsername"] | [ -z "$sourcePassword" ]; then
+    echo "Source username or password is empty - they will not be set in nugetconfig"
+else 
+    echo "Source username and password are not empty - they will be set in nugetconfig"
+fi

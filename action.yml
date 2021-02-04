@@ -1,0 +1,9 @@
+name: 'Github Deploy NuGet packages'
+description: 'Deploy each project as a separate NuGet package'
+author: 'Łukasz Sypniewski'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'git-merge'  
+  color: 'purple'
