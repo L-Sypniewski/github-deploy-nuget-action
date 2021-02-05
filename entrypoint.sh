@@ -11,6 +11,7 @@ sourceName=${SOURCE_NAME:-github}
 sourceUrl=${SOURCE_URL:-https://nuget.pkg.github.com/"$repo_owner"/index.json}
 sourceUsername=${SOURCE_USERNAME}
 sourcePassword=${SOURCE_PASSWORD}
+apiKey=${API_KEY}
 
 
 # Print config
@@ -42,4 +43,11 @@ dotnet pack "${project_name}/${project_name}.csproj" -c Release -p:RepositoryCom
 #Publish package
 echo "Publishing NuGet package of $project_name project"
 
-dotnet nuget push nuget-packages/"${project_name}"/*.nupkg --api-key ${GITHUB_TOKEN} --source ${sourceName} --skip-duplicate
+if [ -z "$apiKey"]; then
+    echo "API key has not been provided, it will not be used for 'nuget push'"
+    dotnet nuget push nuget-packages/"${project_name}"/*.nupkg --source ${sourceName} --skip-duplicate
+else 
+     echo "API key has been provided, it will be used for 'nuget push'"
+    dotnet nuget push nuget-packages/"${project_name}"/*.nupkg --api-key ${apiKey} --source ${sourceName} --skip-duplicate
+fi
+
