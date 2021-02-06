@@ -27,7 +27,7 @@ echo "Preparing NuGet package of $project_name project"
 
 cd /github/workspace
 
-if [ -z "$sourceUsername"] | [ -z "$sourcePassword" ]; then
+if [ -z "$sourceUsername"] || [ -z "$sourcePassword" ]; then
     echo "Source username or password is empty - they will not be set in nugetconfig"
     dotnet nuget add source ${sourceUrl} -n ${sourceName}
 else 
