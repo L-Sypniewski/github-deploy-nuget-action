@@ -44,7 +44,7 @@ if [ -n "$project_subfolder" ]; then
     CSPROJ_PATH="${project_name}/$project_subfolder/${project_name}.csproj"
 fi
 
-dotnet pack "$CSPROJ_PATH" -c Release -p:RepositoryCommit="${commit_id}" -p:PackageVersion="${version}" --output nuget-packages/"${project_name}" --include-symbols
+dotnet pack "$CSPROJ_PATH" -c Release -p:RepositoryCommit="${commit_id}" -p:PackageVersion="${version}" --output nuget-packages/"${project_name}"
 
 #Publish package
 echo "Publishing NuGet package of $project_name project"
