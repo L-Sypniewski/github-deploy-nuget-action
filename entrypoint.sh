@@ -36,6 +36,9 @@ else
     dotnet nuget add source "${sourceUrl}" -n "${sourceName}" -u "${sourceUsername}" -p "${sourcePassword}" --store-password-in-clear-text
 fi
 
+#Build solution first
+dotnet build -c Release -p:Version="${version}"
+
 #Create package
 
 CSPROJ_PATH="${project_name}/${project_name}.csproj"
@@ -44,7 +47,7 @@ if [ -n "$project_subfolder" ]; then
     CSPROJ_PATH="${project_name}/$project_subfolder/${project_name}.csproj"
 fi
 
-dotnet pack "$CSPROJ_PATH" -c Release -p:RepositoryCommit="${commit_id}" -p:PackageVersion="${version}" --output nuget-packages/"${project_name}"
+dotnet pack "$CSPROJ_PATH" -c Release --no-build -p:RepositoryCommit="${commit_id}" --output nuget-packages/"${project_name}"
 
 #Publish package
 echo "Publishing NuGet package of $project_name project"
