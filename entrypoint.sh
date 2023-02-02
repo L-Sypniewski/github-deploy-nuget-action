@@ -54,8 +54,8 @@ echo "Publishing NuGet package of $project_name project"
 
 if [ -z "$apiKey" ]; then
     echo "API key has not been provided, password will be used instead for 'nuget push'"
-    dotnet nuget push nuget-packages/"${project_name}"/*.nupkg --api-key "${sourcePassword}" --source "${sourceName}"
+    dotnet nuget push nuget-packages/"${project_name}"/*.nupkg --api-key "${sourcePassword}" --source "${sourceName}" --skip-duplicate
 else
     echo "API key has been provided, it will be used for 'nuget push'"
-    dotnet nuget push nuget-packages/"${project_name}"/*.nupkg --api-key "${apiKey}" --source "${sourceName}"
+    dotnet nuget push nuget-packages/"${project_name}"/*.nupkg --api-key "${apiKey}" --source "${sourceName}" --skip-duplicate
 fi
